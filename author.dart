@@ -1,10 +1,13 @@
-class ListBooks {}
+import './book.dart';
 
 class Author {
   final String name, nationality;
   final int birth;
-  final ListBooks books;
+  final List<Book> books;
 
-  Author(this.name, this.nationality, this.birth, this.books);
-
+  Author(
+      {required this.name,
+      required this.nationality,
+      required this.birth,
+      required this.books});
 }
