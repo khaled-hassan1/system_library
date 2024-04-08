@@ -4,6 +4,18 @@ import 'enum.dart';
 import 'lib.dart';
 
 void main(List<String> args) {
+  String? status;
+  switch (StatusAvailability) {
+    // ignore: constant_pattern_never_matches_value_type
+    case StatusAvailability.available:
+      status = 'available';
+      break;
+    // ignore: constant_pattern_never_matches_value_type
+    case StatusAvailability.notAvailable:
+      status = 'not available';
+      break;
+    default:
+  }
   Author author1 =
       Author(name: 'name1', nationality: 'EGY', birth: 2000, books: []);
   Author author2 =
@@ -32,19 +44,19 @@ void main(List<String> args) {
   List<Book> bookAuthor2 = [
     Book(
         title: 'title3',
-        author: author1,
+        author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2010,
         status: StatusAvailability.available),
     Book(
         title: 'title4',
-        author: author1,
+        author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2011,
         status: StatusAvailability.available),
     Book(
         title: 'title5',
-        author: author1,
+        author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2012,
         status: StatusAvailability.notAvailable),
@@ -53,7 +65,8 @@ void main(List<String> args) {
   Library library = Library();
   library.books.addAll(bookAuthor1);
   library.books.addAll(bookAuthor2);
-  List<Book> bookList = library.searchingBook(author1);
+  List<Book> bookList = library.searchingBook(author2);
+
   for (var element in bookList) {
     print(
         '${element.title} - ${element.status} - ${element.author.name} - ${element.publicationYear} - ${element.isbn}');
