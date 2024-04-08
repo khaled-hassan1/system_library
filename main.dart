@@ -4,17 +4,6 @@ import 'enum.dart';
 import 'lib.dart';
 
 void main(List<String> args) {
-  String bookStatus(StatusAvailability statues) {
-    String status;
-    switch (statues) {
-      case StatusAvailability.available:
-        status = "Available";
-      case StatusAvailability.notAvailable:
-        status = "Not Available";
-    }
-    return status;
-  }
-
   Author author1 =
       Author(name: 'name1', nationality: 'EGY', birth: 2000, books: []);
   Author author2 =
@@ -32,7 +21,7 @@ void main(List<String> args) {
         author: author1,
         isbn: '0-061-96436-0',
         publicationYear: 2011,
-        status: bookStatus(StatusAvailability.available)),
+        status: bookStatus(StatusAvailability.notAvailable)),
     Book(
         title: 'title3',
         author: author1,
@@ -70,4 +59,15 @@ void main(List<String> args) {
     print(
         '${element.title} - ${element.status} - ${element.author.name} - ${element.publicationYear} - ${element.isbn}');
   }
+}
+
+String bookStatus(StatusAvailability statues) {
+  String status='unknown';
+  switch (statues) {
+    case StatusAvailability.available:
+      status = "Available";
+    case StatusAvailability.notAvailable:
+      status = "Not Available";
+  }
+  return status;
 }
