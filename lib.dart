@@ -1,5 +1,5 @@
 import 'author.dart';
-import 'book.dart';
+import 'book_model.dart';
 import 'enum.dart';
 
 class Library {

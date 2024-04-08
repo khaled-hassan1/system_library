@@ -1,21 +1,20 @@
 import 'author.dart';
-import 'book.dart';
+import 'book_model.dart';
 import 'enum.dart';
 import 'lib.dart';
 
 void main(List<String> args) {
-  String? status;
-  switch (StatusAvailability) {
-    // ignore: constant_pattern_never_matches_value_type
-    case StatusAvailability.available:
-      status = 'available';
-      break;
-    // ignore: constant_pattern_never_matches_value_type
-    case StatusAvailability.notAvailable:
-      status = 'not available';
-      break;
-    default:
+  String bookStatus(StatusAvailability statues) {
+    String status;
+    switch (statues) {
+      case StatusAvailability.available:
+        status = "Available";
+      case StatusAvailability.notAvailable:
+        status = "Not Available";
+    }
+    return status;
   }
+
   Author author1 =
       Author(name: 'name1', nationality: 'EGY', birth: 2000, books: []);
   Author author2 =
@@ -27,19 +26,19 @@ void main(List<String> args) {
         author: author1,
         isbn: '0-061-96436-0',
         publicationYear: 2010,
-        status: StatusAvailability.available),
+        status: bookStatus(StatusAvailability.available)),
     Book(
         title: 'title2',
         author: author1,
         isbn: '0-061-96436-0',
         publicationYear: 2011,
-        status: StatusAvailability.available),
+        status: bookStatus(StatusAvailability.available)),
     Book(
         title: 'title3',
         author: author1,
         isbn: '0-061-96436-0',
         publicationYear: 2012,
-        status: StatusAvailability.notAvailable),
+        status: bookStatus(StatusAvailability.available)),
   ];
   List<Book> bookAuthor2 = [
     Book(
@@ -47,19 +46,19 @@ void main(List<String> args) {
         author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2010,
-        status: StatusAvailability.available),
+        status: bookStatus(StatusAvailability.available)),
     Book(
         title: 'title4',
         author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2011,
-        status: StatusAvailability.available),
+        status: bookStatus(StatusAvailability.available)),
     Book(
         title: 'title5',
         author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2012,
-        status: StatusAvailability.notAvailable),
+        status: bookStatus(StatusAvailability.available)),
   ];
 
   Library library = Library();
