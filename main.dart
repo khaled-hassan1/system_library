@@ -1,5 +1,5 @@
 import 'author.dart';
-import 'book_model.dart';
+import 'book.dart';
 import 'enum.dart';
 import 'lib.dart';
 
@@ -47,7 +47,7 @@ void main(List<String> args) {
         author: author2,
         isbn: '0-061-96436-0',
         publicationYear: 2012,
-        status: bookStatus(StatusAvailability.available)),
+        status: bookStatus(StatusAvailability.notAvailable)),
   ];
 
   Library library = Library();
@@ -62,7 +62,7 @@ void main(List<String> args) {
 }
 
 String bookStatus(StatusAvailability statues) {
-  String status='unknown';
+  String status = 'unknown';
   switch (statues) {
     case StatusAvailability.available:
       status = "Available";

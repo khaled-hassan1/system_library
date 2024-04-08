@@ -1,4 +1,5 @@
-import 'book_model.dart';
+
+import 'book.dart';
 
 class Author {
   final String name, nationality;
