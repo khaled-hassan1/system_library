@@ -18,9 +18,5 @@ abstract class Library {
     return _books.where((element) => element.author == author).toList();
   }
 
-  void disPlay() {
-    _books.forEach((element) {
-      print('${element.author.name} || ${element.title} ');
-    },);
-  }
+  void disPlay() {}
 }

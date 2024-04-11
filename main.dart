@@ -3,8 +3,16 @@ import 'dart:io';
 import './model/book.dart';
 import './items_books.dart';
 import './model/enum.dart';
+import 'model/lib.dart';
+import 'subjects/arabic.dart';
+import 'subjects/biology.dart';
 
 void main(List<String> args) {
+  Library libarabic=Arabic();
+  libarabic.disPlay();
+  
+  Library libBio=Biology();
+  libBio.disPlay();
   stdout.write('Name of Book: ');
   String searchTerm = stdin.readLineSync()!;
   print('''
