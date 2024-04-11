@@ -30,7 +30,7 @@ void main(List<String> args) {
   ];
 
   Library library = Library();
-  library.books.addAll(a);
+  library.books.addAll(generateList);
   library.books.addAll(bookAuthor2);
   List<Book> bookList = library.searchingBook(author1);
 
@@ -40,7 +40,7 @@ void main(List<String> args) {
   }
 
   String searchTerm = 'title12';
-  List<Book> searchResults = searchTitle(a, '${searchTerm}');
+  List<Book> searchResults = searchTitle(generateList, '${searchTerm}');
 
   void displayBooksFormatted(List<Book> books) {
     for (int i = 0; i < books.length; i++) {

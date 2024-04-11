@@ -8,7 +8,7 @@ import 'main.dart';
 Author author1 =
     Author(name: 'name1', nationality: 'EGY', birth: 2000, books: []);
 
-List<Book> a = List.generate(
+List<Book> generateList = List.generate(
     20,
     (index) => Book(
         title: 'title$index',
