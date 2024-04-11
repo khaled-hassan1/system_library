@@ -1,48 +1,29 @@
-// import 'author.dart';
-// import 'books.dart';
-// import 'enum.dart';
+import 'author_items.dart';
+import 'main.dart';
+import 'model/book.dart';
+import 'model/enum.dart';
 
-// Author author1 =
-//     Author(name: 'name1', nationality: 'EGY', birth: 2000, books: []);
-// Author author2 =
-//     Author(name: 'name2', nationality: 'EGY', birth: 2010, books: []);
-// List<Book> bookAuthor1 = [
-//   Book(
-//       title: 'title1',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2010,
-//       status: StatusAvailability.available),
-//   Book(
-//       title: 'title2',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2011,
-//       status: StatusAvailability.available),
-//   Book(
-//       title: 'title3',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2012,
-//       status: StatusAvailability.notAvailable),
-// ];
-// List<Book> bookAuthor2 = [
-//   Book(
-//       title: 'title3',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2010,
-//       status: StatusAvailability.available),
-//   Book(
-//       title: 'title4',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2011,
-//       status: StatusAvailability.available),
-//   Book(
-//       title: 'title5',
-//       author: author1,
-//       isbn: '0-061-96436-0',
-//       publicationYear: 2012,
-//       status: StatusAvailability.notAvailable),
-// ];
+List<Book> arabic = List.generate(10, (index) {
+  bool isAvailable = index % 5 == 0;
+  return Book(
+      title: 'arabic${index + 1}',
+      isbn: 'isbn$index',
+      status: bookStatus(isAvailable
+          ? StatusAvailability.available
+          : StatusAvailability.notAvailable),
+      author: author1,
+      publicationYear: (index + 1) * 2);
+});
+
+List<Book> biology = List.generate(10, (index) {
+  bool isAvailable = index % 5 == 0;
+
+  return Book(
+      title: 'bio$index',
+      isbn: 'isbn$index',
+      status: bookStatus(isAvailable
+          ? StatusAvailability.available
+          : StatusAvailability.notAvailable),
+      author: author2,
+      publicationYear: (index + 1) * 3);
+});

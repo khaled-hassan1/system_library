@@ -1,5 +1,3 @@
-//
-
 import './author.dart';
 
 class Book {

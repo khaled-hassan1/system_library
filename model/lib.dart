@@ -1,14 +1,13 @@
 import 'author.dart';
 import 'book.dart';
-import 'enum.dart';
 
-class Library {
+abstract class Library {
   List<Book> _books = [];
 
-  List<Book> get books => _books;
+  List<Book> get books => [..._books];
 
-  void addBook(Book book) {
-    _books.add(book);
+  void addBooks(List<Book> books) {
+    _books.addAll(books);
   }
 
   void removeBook(Book book) {
@@ -19,7 +18,9 @@ class Library {
     return _books.where((element) => element.author == author).toList();
   }
 
-  void dipBookAvailableBooks() {
-    _books.where((element) => element.status == StatusAvailability.available).forEach(print);
+  void disPlay() {
+    _books.forEach((element) {
+      print('${element.author.name} || ${element.title} ');
+    },);
   }
 }

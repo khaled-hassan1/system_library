@@ -1,59 +1,43 @@
-import 'author.dart';
-import 'book.dart';
-import 'constant.dart';
-import 'enum.dart';
-import 'lib.dart';
+import 'dart:io';
+
+import './model/book.dart';
+import './items_books.dart';
+import './model/enum.dart';
 
 void main(List<String> args) {
-  Author author2 =
-      Author(name: 'name2', nationality: 'EGY', birth: 2010, books: []);
+  stdout.write('Name of Book: ');
+  String searchTerm = stdin.readLineSync()!;
+  print('''
+Subjects:
+     1- Arabic
+     2- Biology''');
 
-  List<Book> bookAuthor2 = [
-    Book(
-        title: 'title3',
-        author: author2,
-        isbn: '0-061-96436-0',
-        publicationYear: 2010,
-        status: bookStatus(StatusAvailability.available)),
-    Book(
-        title: 'title4',
-        author: author2,
-        isbn: '0-061-96436-0',
-        publicationYear: 2011,
-        status: bookStatus(StatusAvailability.available)),
-    Book(
-        title: 'title5',
-        author: author2,
-        isbn: '0-061-96436-0',
-        publicationYear: 2012,
-        status: bookStatus(StatusAvailability.notAvailable)),
-  ];
-
-  Library library = Library();
-  library.books.addAll(generateList);
-  library.books.addAll(bookAuthor2);
-  List<Book> bookList = library.searchingBook(author1);
-
-  for (Book element in bookList) {
-    print(
-        '${element.title} - ${element.status} - ${element.author.name} - ${element.publicationYear} - ${element.isbn}');
-  }
-
-  String searchTerm = 'title12';
-  List<Book> searchResults = searchTitle(generateList, '${searchTerm}');
+  stdout.write('Subject: ');
+  String searchSubject = stdin.readLineSync()!;
+  List<Book> chosenBook = [];
+  chosenBook = choseBook(searchSubject, chosenBook);
+  List<Book> searchResults = searchTitle(chosenBook, '${searchTerm}');
 
   void displayBooksFormatted(List<Book> books) {
+    print(
+        '+--------+---------------------------------+-----------------+---------------------+');
+    print(
+        '|  Index |              Title              |      ISBN       |       Status        |');
+    print(
+        '+--------+---------------------------------+-----------------+---------------------+');
+
+    // Print each book's details in the table
     for (int i = 0; i < books.length; i++) {
       Book book = books[i];
-      print('Title: ${book.title}');
-      print('ISBN: ${book.isbn}');
+      String flag = i % 5 == 0 ? '✅' : '✕';
+
       print(
-          'Status: ${book.status}'); // Assuming status has a toString() method
-      print(
-          'Author: ${book.author.name}'); // Assuming Author has a name property
-      print('Publication Year: ${book.publicationYear}');
-      print('---'); // Add a separator between books
+          '|   ${(i + 1).toString().padLeft(2)}   | ${book.title.padRight(31)} | ${book.isbn.padRight(15)} | ${book.status.toString().padRight(19)} | $flag');
     }
+
+    // Print table footer
+    print(
+        '+--------+---------------------------------+-----------------+---------------------+');
   }
 
   if (searchResults.isEmpty) {
@@ -62,6 +46,15 @@ void main(List<String> args) {
     print('Search results for "$searchTerm":');
     displayBooksFormatted(searchResults);
   }
+}
+
+List<Book> choseBook(String searchSubject, List<Book> chosenBook) {
+  if (searchSubject == '1') {
+    chosenBook = arabic;
+  } else {
+    chosenBook = biology;
+  }
+  return chosenBook;
 }
 
 List<Book> searchTitle(List<Book> books, String title) {
@@ -76,12 +69,12 @@ List<Book> searchTitle(List<Book> books, String title) {
 }
 
 String bookStatus(StatusAvailability statues) {
-  String status = 'unknown';
   switch (statues) {
     case StatusAvailability.available:
-      status = "Available";
+      return "Available";
     case StatusAvailability.notAvailable:
-      status = "Not Available";
+      return "Not Available";
+    default:
+      return 'Unknown';
   }
-  return status;
 }
