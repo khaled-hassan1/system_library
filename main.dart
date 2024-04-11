@@ -10,7 +10,12 @@ void main(List<String> args) {
   print('''
 Subjects:
      1- Arabic
-     2- Biology''');
+     2- Biology
+     3- Frannce
+     4- Geography
+     5- History
+     6- Math
+     7- Science''');
 
   stdout.write('Subject: ');
   String searchSubject = stdin.readLineSync()!;
@@ -49,10 +54,30 @@ Subjects:
 }
 
 List<Book> choseBook(String searchSubject, List<Book> chosenBook) {
-  if (searchSubject == '1') {
-    chosenBook = arabic;
-  } else {
-    chosenBook = biology;
+  switch (searchSubject) {
+    case '1':
+      chosenBook = arabic;
+      break;
+    case '2':
+      chosenBook = biology;
+      break;
+    case '3':
+      chosenBook = france;
+      break;
+    case '4':
+      chosenBook = geograprh;
+      break;
+    case '5':
+      chosenBook = history;
+      break;
+    case '6':
+      chosenBook = math;
+    case '7':
+      chosenBook = science;
+      break;
+    default:
+      print('Invalid subject selection.');
+      break;
   }
   return chosenBook;
 }
